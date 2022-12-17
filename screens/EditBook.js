@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Text, View, TextInput, StyleSheet, Dimensions, TouchableOpacity } from "react-native";
 import * as SQLite from 'expo-sqlite'
 
-const EditVerse = ({ route, navigation }) => {
+const EditBook = ({ route, navigation }) => {
     const db = SQLite.openDatabase('Books.db')
     const [title, setTitle] = useState('')
     const [descriptions, setDescriptions] = useState('')
@@ -45,13 +45,13 @@ const EditVerse = ({ route, navigation }) => {
                     console.log(results);
                     if(results.rowsAffected >0){
                         alert('Books Updated Successfully...')
-                        navigation.navigate("AllVerse")
+                        navigation.navigate("AllBook")
                     }else{
                         alert("Error")
                     }
                 }
             )
-            navigation.navigate("AllVerse")
+            navigation.navigate("AllBook")
         })
     }
     return (
@@ -103,41 +103,46 @@ const EditVerse = ({ route, navigation }) => {
     )
 }
 
-export default EditVerse
+export default EditBook
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#8cd98c",
+        backgroundColor: "#0D0D28",
         width: "100%",
         height: "100%"
     },
     userRequest: {
-        marginVertical: 100,
+        marginVertical: 40,
         justifyContent: 'center',
         alignItems: "center",
-        backgroundColor: "#339933",
-        borderRadius: 23,
+        backgroundColor: "white",
+        borderRadius: 15,
         marginHorizontal: 10,
         width: Dimensions.get('screen').width - 20,
     },
     requestText: {
-        width: "60%",
+        width: "70%",
         height: 40,
         margin: 20,
-        borderRadius: 15,
+        borderWidth: 1,
+        borderRadius: 5,
+        backgroundColor: "#0D0D28",
+        borderColor: "#0D0D28",
         backgroundColor: "white",
-        color: "black",
+        color: "grey",
+        fontWeight: "normal",
         paddingLeft: 10,
         fontSize: 16,
-        fontWeight: "bold"
     },
     button: {
-        width: "60%",
+        width: "50%",
         height: 30,
         margin: 20,
-        borderRadius: 15,
+        borderWidth: 1,
+        borderRadius: 5,
+        backgroundColor: "#0D0D28",
         alignItems: 'center',
-        backgroundColor: "#66cc66"
+   
     },
     buttonText: {
         color: "white",
@@ -147,7 +152,7 @@ const styles = StyleSheet.create({
     text: {
         color: "white",
         textAlign: "center",
-        marginTop: 100,
+        marginTop: 60,
         fontWeight: "bold",
         fontSize: 30,
     },

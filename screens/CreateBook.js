@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Text, View, TextInput, StyleSheet, Dimensions, TouchableOpacity ,ScrollView} from "react-native";
-import * as SQLite from 'expo-sqlite'
+import {TouchableOpacity, Text, TextInput, StyleSheet, View, Dimensions ,ScrollView} from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import * as SQLite from 'expo-sqlite'
 
 
-const CreateVerse = () => {
+const CreateBook = () => {
     const db = SQLite.openDatabase('Books.db')
-    const [title, setTitle] = useState('')
     const [descriptions, setDescriptions] = useState('')
     const [author, setAuthor] = useState('')
     const [cost, setCost] = useState("")
+    const [title, setTitle] = useState('')
     const navigation = useNavigation()
 
     const create = () => {
@@ -51,14 +51,14 @@ const CreateVerse = () => {
                 <TextInput
                     onChangeText={(value) => setDescriptions(value)}
                     style={styles.requestText}
-                    placeholder="Descriptions"
+                    placeholder="Description"
                     multiline
                     value={descriptions}
                 />
                    <TextInput
                     onChangeText={(value) => setAuthor(value)}
                     style={styles.requestText}
-                    placeholder="author"
+                    placeholder="Author Name"
                     value={author}
                 />
                 <TextInput
@@ -74,7 +74,7 @@ const CreateVerse = () => {
                     <Text style={styles.buttonText}>Add</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate("AllVerse")}
+                    onPress={() => navigation.navigate("AllBook")}
                     style={styles.button}
                 >
                     <Text style={styles.buttonText}>View</Text>
@@ -84,42 +84,47 @@ const CreateVerse = () => {
     )
 }
 
-export default CreateVerse
+export default CreateBook
 
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#8cd98c",
+        backgroundColor: "#0D0D28",
         width: "100%",
         height: "100%"
     },
     userRequest: {
-        marginVertical: 100,
+        marginVertical: 40,
         justifyContent: 'center',
         alignItems: "center",
-        backgroundColor: "#339933",
-        borderRadius: 23,
+        backgroundColor: "white",
+        borderRadius: 15,
         marginHorizontal: 10,
         width: Dimensions.get('screen').width - 20,
     },
     requestText: {
-        width: "60%",
+        width: "70%",
         height: 40,
         margin: 20,
-        borderRadius: 15,
+        borderWidth: 1,
+        borderRadius: 5,
+        backgroundColor: "#0D0D28",
+        borderColor: "#0D0D28",
         backgroundColor: "white",
-        color: "black",
+        color: "grey",
+        fontWeight: "normal",
         paddingLeft: 10,
         fontSize: 16,
-        fontWeight: "bold"
     },
     button: {
-        width: "60%",
+        width: "50%",
         height: 30,
         margin: 20,
-        borderRadius: 15,
+        borderWidth: 1,
+        borderRadius: 5,
+        backgroundColor: "#0D0D28",
         alignItems: 'center',
-        backgroundColor: "#66cc66"
+   
     },
     buttonText: {
         color: "white",
@@ -129,7 +134,7 @@ const styles = StyleSheet.create({
     text: {
         color: "white",
         textAlign: "center",
-        marginTop: 100,
+        marginTop: 60,
         fontWeight: "bold",
         fontSize: 30,
     },
